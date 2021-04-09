@@ -12,3 +12,6 @@ body{
   list-style: none;
   display: inline;
 }
+.list-item list task-button{
+  display: flex;
+}

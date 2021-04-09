@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from 'uuid'
 import '../App.css'
 
 const Form = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
-    const updateTodo = (id, title, completed) => {
+    const updateTodo = (id, title) => {
         // eslint-disable-next-line array-callback-return
         const newTodo = todos.map((todo) =>
             // eslint-disable-next-line no-unused-expressions
-            todo.id === id ? { title, id, completed } : todo
+            todo.id === id ? { title, id } : todo
         );
         setTodos(newTodo);
         setEditTodo("");
@@ -31,7 +31,7 @@ const Form = ({ input, setInput, todos, setTodos, editTodo, setEditTodo }) => {
     const onFormSubmit = (event) => {
         event.preventDefault();
         if (!editTodo) {
-            setTodos([...todos, { id: uuidv4(), title: input, completed: false }]);
+            setTodos([...todos, { id: uuidv4(), title: input, isChecked: false }]);
             setInput("");
         } else {
             updateTodo(input, editTodo.id, editTodo.completed);
